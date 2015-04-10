@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="gitHubViewer">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body ng-controller="MainController">
+<h1>{{message}}</h1>
+
+<div>{{error}}</div>
+
+{{username}}
+
+<form name="searchUser" ng-submit="search(username)">
+    <input type="search" required placeholder="Username to find" ng-model="username" />
+    <input type="submit" value="Search" />
+</form>
+
+<div>
+    <h2>{{user.name}}</h2>
+    <img ng-src="{{user.avatar_url}}" title="{{user.name}}" />
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Stars</th>
+        <th>Language</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="repo in repos">
+        <td>{{repo.name}}</td>
+        <td>{{repo.stargazers_count}}</td>
+        <td>{{repo.language}}</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+<script src="bower_components/angularjs/angular.js"></script>
+<script src="script.js"></script>
+</html>
