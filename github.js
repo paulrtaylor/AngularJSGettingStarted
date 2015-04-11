@@ -10,6 +10,7 @@
                 })
         };
 
+        //info
         var getRepos = function(user){
             $http.get(user.repos_url)
                 .then(function(response){
