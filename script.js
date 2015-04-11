@@ -3,11 +3,11 @@
 
     var app = angular.module("gitHubViewer", []);
 
-    var mainController = function ($scope, $http, $interval, $log, $anchorScroll, $location) {
+    var mainController = function ($scope, github, $interval, $log, $anchorScroll, $location) {
 
         // Options to search for: paulrtaylor, odetocode, angular
-        var onRepos = function(response) {
-            $scope.repos = response.data;
+        var onRepos = function(data) {
+            $scope.repos = data;
             $location.hash("userDetails");
             $anchorScroll();
         };
@@ -16,9 +16,9 @@
             $scope.error = "Unable to retrieve the data: " + reason.data.message;
         };
 
-        var onUserComplete = function(response) {
-            $scope.user = response.data;
-            $http.get($scope.user.repos_url)
+        var onUserComplete = function(data) {
+            $scope.user = data;
+            github.getRepos($scope.user)
                 .then(onRepos, onError);
         };
 
@@ -37,7 +37,7 @@
         $scope.search = function(username) {
 
             $log.info("Searching for " + username);
-            $http.get("https://api.github.com/users/" + username)
+            github.getUser(username)
                 .then(onUserComplete, onError);
             if(countdownInterval){
                 $interval.cancel(countdownInterval);
@@ -53,6 +53,6 @@
 
     };
 
-    app.controller("MainController", ["$scope", "$http", "$interval", "$log", "$anchorScroll", "$location", mainController]);
+    app.controller("MainController", ["$scope", "github", "$interval", "$log", "$anchorScroll", "$location", mainController]);
 
 }());
