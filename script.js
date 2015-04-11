@@ -26,7 +26,9 @@
                 .then(onUserComplete, onError);
         };
 
+        $scope.username = "angular";
         $scope.message = "Github Viewer";
+        $scope.repoSortOrder = "-stargazers_count";
 
     };
 
