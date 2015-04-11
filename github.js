@@ -1,4 +1,5 @@
 // Simple github service
+"use strict";
 (function(){
 
     var github = function($http){
@@ -12,7 +13,7 @@
 
         //info
         var getRepos = function(user){
-            $http.get(user.repos_url)
+            return $http.get(user.repos_url)
                 .then(function(response){
                     return response.data;
                 })

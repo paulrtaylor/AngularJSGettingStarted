@@ -4,24 +4,17 @@
     <meta charset="UTF-8">
     <title></title>
 </head>
-<body ng-controller="MainController">
-<h1>{{message}}</h1>
 
-<div>{{error}}</div>
+<body>
+<h1>Githib Viewer</h1>
 
-<div>{{countdown}}</div>
-
-{{username}}
-<form name="searchUser" ng-submit="search(username)">
-    <input type="search" required placeholder="Username to find" ng-model="username" />
-    <input type="submit" value="Search" />
-</form>
-
-<!--Use single quotes to stop angular from evaluating-->
-<div ng-include="'userdetails.html'" ng-show="user"></div>
-
+<div ng-view></div>
 </body>
+
 <script src="bower_components/angularjs/angular.js"></script>
-<script src="script.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="app.js"></script>
+<script src="maincontroller.js"></script>
+<script src="usercontroller.js"></script>
 <script src="github.js"></script>
 </html>
