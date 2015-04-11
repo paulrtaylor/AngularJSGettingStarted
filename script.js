@@ -14,7 +14,10 @@
             $scope.error = "Unable to retrieve the data: " + reason.data.message;
         };
 
-        
+
+
+
+
         var onUserComplete = function(response) {
             $scope.user = response.data;
             $http.get($scope.user.repos_url)
