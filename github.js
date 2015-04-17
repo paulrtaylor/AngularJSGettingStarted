@@ -41,7 +41,7 @@
     };
 
 
-    var module = angular.module("gitHubViewer");
-    module.factory("github", github);
+    var app = angular.module("gitHubViewer");
+    app.factory("github", github);
 
 })();
